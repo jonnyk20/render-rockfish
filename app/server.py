@@ -9,15 +9,28 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
-export_file_url = 'https://drive.google.com/uc?export=download&id=1ZKZ8n0cNdwe56Eymyg-bTQCABlLVwU02'
-export_file_name = 'export.pkl'
+export_file_url = 'https://drive.google.com/uc?export=download&id=1NNZdMbtUzgxsVTNAi1kLZSEbe0qUlYrc'
+export_file_name = 'rockfish-model.pkl'
 
-classes = ['white', 'reef', 'tiger']
+classes = [
+    'black',
+    'blue',
+    'brown',
+    'canary',
+    'china',
+    'copper',
+    'grass',
+    'quillback',
+    'tiger',
+    'vermillion',
+    'yelloweye',
+    'yellowtail'
+]
+
 path = Path(__file__).parent
 
 app = Starlette()
-app.add_middleware(CORSMiddleware, allow_origins=[
-                   '*'], allow_headers=['X-Requested-With', 'Content-Type'])
+app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
 app.mount('/static', StaticFiles(directory='app/static'))
 
 
